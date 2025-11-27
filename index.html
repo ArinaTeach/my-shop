@@ -409,6 +409,39 @@
             background: var(--primary);
             color: white;
         }
+/* About & Contact sections */
+.info-section {
+    padding: 4rem 0;
+}
+
+.info-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 2fr) minmax(0, 1.3fr);
+    gap: 2rem;
+    align-items: flex-start;
+}
+
+.info-card {
+    background: white;
+    border-radius: 12px;
+    padding: 2rem;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+}
+
+.info-card h3 {
+    margin-bottom: 1rem;
+    color: var(--secondary);
+}
+
+.info-card p {
+    color: var(--gray);
+    margin-bottom: 1rem;
+}
+
+.info-card ul {
+    padding-left: 1.2rem;
+    color: var(--gray);
+}
 
         /* Footer */
         footer {
@@ -499,6 +532,13 @@
             color: var(--secondary);
             font-weight: 600;
         }
+/* Отступ при прокрутке к якорям, чтобы не перекрывало меню */
+#home,
+#products,
+#about,
+#contact {
+    scroll-margin-top: 100px;
+}
 
         /* Responsive */
         @media (max-width: 768px) {
@@ -543,7 +583,7 @@
                         <li><a href="#home">Главная</a></li>
                         <li><a href="#products">Материалы</a></li>
                         <li><a href="#about">О нас</a></li>
-                        <li><a href="#contact">Контакты</a></li>
+                        
                     </ul>
                 </nav>
             </div>
@@ -650,6 +690,43 @@
             </div>
         </div>
     </section>
+    <!-- About Section -->
+    <section id="about" class="info-section">
+        <div class="container">
+            <div class="section-title">
+                <h2>О нас</h2>
+            </div>
+            <div class="info-grid">
+                <div class="info-card">
+                    <h3>Для кого эти материалы</h3>
+                    <p>
+                        English5_dom - это группа креативных педагогов, которые создают различные материалы по английскому языку для дошкольников и учащихся 1–4 классов
+                      . Наши материалы подойдут учителям школ, частным репетиторам и родителям,
+                        которые хотят заниматься с ребёнком дома.
+                    </p>
+                    <ul>
+                        <li>задания в игровом формате;</li>
+                        <li>чёткая привязка к темам начальной школы;</li>
+                        <li>экономия времени на подготовку к уроку.</li>
+                    </ul>
+                </div>
+                <div class="info-card">
+                    <h3>Чем мы помогаем учителям</h3>
+                    <p>
+                        Все разработки протестированы на реальных занятиях и оформлены так,
+                        чтобы их можно было сразу распечатать или показать с экрана.
+                    </p>
+                    <ul>
+                        <li>рабочие листы, карточки, игры и презентации;</li>
+                        <li>понятные инструкции по использованию;</li>
+                        <li>материалы для разных уровней и возрастов.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    
 
     <!-- Modal Windows -->
     <!-- Modal 1 -->
