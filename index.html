@@ -1,0 +1,1092 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>English5_dom - Материалы для уроков</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        :root {
+            --primary: #4e54c8;
+            --secondary: #2a2d7c;
+            --accent: #ff6b6b;
+            --light: #f8f9fa;
+            --dark: #212529;
+            --gray: #6c757d;
+            --success: #51cf66;
+        }
+
+        body {
+            background-color: #f5f7fb;
+            color: var(--dark);
+            line-height: 1.6;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+
+        /* Header Styles */
+        header {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            padding: 1rem 0;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 1.5rem;
+            font-weight: 700;
+        }
+
+        .logo i {
+            color: var(--accent);
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            padding: 5px 10px;
+            border-radius: 4px;
+        }
+
+        nav a:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+
+    /* Hero Section */
+.hero {
+    background:
+        radial-gradient(circle at 20% 20%, #b58ff22a 0%, transparent 60%),
+        radial-gradient(circle at 80% 80%, #4a2b8f22 0%, transparent 60%),
+        linear-gradient(135deg, #f7f5ff 0%, #fef7ff 100%);
+    color: #2a2d7c;
+    text-align: center;
+    padding: 5rem 1rem;
+    margin-bottom: 3rem;
+}
+
+
+
+
+        
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto 2rem;
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: var(--secondary);
+            color: white;
+            padding: 12px 28px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            box-shadow: none;
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: none;
+        }
+
+        /* Products Section */
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+            position: relative;
+        }
+
+        .section-title h2 {
+            font-size: 2.5rem;
+            color: var(--secondary);
+            display: inline-block;
+        }
+
+        .section-title h2:after {
+            content: '';
+            display: block;
+            width: 70px;
+            height: 4px;
+            background: var(--accent);
+            margin: 10px auto;
+            border-radius: 2px;
+        }
+
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 4rem;
+        }
+
+        .product-card {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .product-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+        }
+
+        .product-image {
+            height: 260px;
+            overflow: hidden;
+        }
+
+        .product-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .product-card:hover .product-image img {
+            transform: scale(1.05);
+        }
+
+        .product-info {
+            padding: 1.5rem;
+        }
+
+        .product-info h3 {
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+            color: var(--secondary);
+        }
+
+        .product-info p {
+            color: var(--gray);
+            margin-bottom: 1rem;
+            font-size: 0.95rem;
+        }
+
+        .product-price {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+
+        .product-card .btn {
+            width: 100%;
+            text-align: center;
+            padding: 10px;
+            font-size: 0.9rem;
+        }
+
+        /* Modal Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            z-index: 1000;
+            overflow-y: auto;
+            padding: 20px;
+        }
+
+        .modal-content {
+            background-color: white;
+            margin: 2% auto;
+            width: 90%;
+            max-width: 900px;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            animation: modalAppear 0.4s ease;
+        }
+
+        @keyframes modalAppear {
+            from { opacity: 0; transform: translateY(-50px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .close-modal {
+            position: absolute;
+            top: 15px;
+            right: 25px;
+            font-size: 2rem;
+            color: white;
+            cursor: pointer;
+            z-index: 10;
+            transition: color 0.3s ease;
+        }
+
+        .close-modal:hover {
+            color: var(--accent);
+        }
+
+        .modal-body {
+            display: flex;
+            flex-direction: column;
+        }
+
+        @media (min-width: 768px) {
+            .modal-body {
+                flex-direction: row;
+            }
+        }
+
+        .modal-images {
+            flex: 1;
+            position: relative;
+        }
+
+        .carousel {
+            position: relative;
+            height: 100%;
+        }
+
+        .carousel-inner {
+            height: 100%;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .carousel-item {
+            display: none;
+            height: 100%;
+        }
+
+        .carousel-item.active {
+            display: block;
+        }
+
+        .carousel-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .carousel-control {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background-color: rgba(255, 255, 255, 0.7);
+            color: var(--dark);
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            z-index: 5;
+        }
+
+        .carousel-control:hover {
+            background-color: white;
+        }
+
+        .carousel-control.prev {
+            left: 15px;
+        }
+
+        .carousel-control.next {
+            right: 15px;
+        }
+
+        .modal-details {
+            flex: 1;
+            padding: 2rem;
+        }
+
+        .modal-details h2 {
+            font-size: 1.8rem;
+            color: var(--secondary);
+            margin-bottom: 1rem;
+        }
+
+        .modal-price {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin: 1rem 0;
+        }
+
+        .modal-description {
+            color: var(--gray);
+            margin-bottom: 1.5rem;
+            line-height: 1.7;
+        }
+
+        .features {
+            margin: 1.5rem 0;
+        }
+
+        .features h3 {
+            margin-bottom: 0.8rem;
+            color: var(--secondary);
+        }
+
+        .features ul {
+            list-style-type: none;
+        }
+
+        .features li {
+            margin-bottom: 0.5rem;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+
+        .features li:before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--success);
+            font-weight: bold;
+        }
+
+        .modal-actions {
+            display: flex;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .modal-actions .btn {
+            flex: 1;
+            text-align: center;
+        }
+
+        .btn-outline {
+            background: transparent;
+            border: 2px solid var(--primary);
+            color: var(--primary);
+            box-shadow: none;
+        }
+
+        .btn-outline:hover {
+            background: var(--primary);
+            color: white;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--dark);
+            color: white;
+            padding: 3rem 0 1.5rem;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-column h3 {
+            font-size: 1.2rem;
+            margin-bottom: 1.5rem;
+            position: relative;
+            padding-bottom: 0.5rem;
+        }
+
+        .footer-column h3:after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            width: 40px;
+            height: 3px;
+            background: var(--accent);
+        }
+
+        .footer-column ul {
+            list-style: none;
+        }
+
+        .footer-column ul li {
+            margin-bottom: 0.8rem;
+        }
+
+        .footer-column a {
+            color: #adb5bd;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-column a:hover {
+            color: white;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 36px;
+            height: 36px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            transition: all 0.3s ease;
+        }
+
+        .social-links a:hover {
+            background: var(--accent);
+            transform: translateY(-3px);
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 1.5rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: #adb5bd;
+            font-size: 0.9rem;
+        }
+
+        .materials-line {
+            text-align: center;
+            font-size: 1.1rem;
+            margin-top: 2rem;
+            padding: 1rem;
+            background-color: var(--light);
+            border-radius: 8px;
+            color: var(--secondary);
+            font-weight: 600;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            nav ul {
+                gap: 1rem;
+            }
+
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+
+            .hero p {
+                font-size: 1rem;
+            }
+
+            .modal-body {
+                flex-direction: column;
+            }
+
+            .modal-images {
+                height: 300px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <i class="fas fa-graduation-cap"></i>
+                    <span>English5_dom </span>
+                </div>
+                <nav>
+                    <ul>
+                        <li><a href="#home">Главная</a></li>
+                        <li><a href="#products">Материалы</a></li>
+                        <li><a href="#about">О нас</a></li>
+                        <li><a href="#contact">Контакты</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="container">
+            <h1>Английский для начальной школы</h1>
+            <p>Готовые рабочие листы, карточки, игры и презентации для увлекательных уроков английского в 1-4 классах</p>
+            <a href="#products" class="btn">Смотреть материалы</a>
+        </div>
+    </section>
+
+    <!-- Products Section -->
+    <section id="products">
+        <div class="container">
+            <div class="section-title">
+                <h2>Наши материалы</h2>
+            </div>
+            <div class="products-grid">
+                <!-- Product Card 1 -->
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="images/cover1.png" alt="">
+                    </div>
+                    <div class="product-info">
+                        <h3>Рабочие листы по теме Past Simple</h3>
+                        <p>Рабочий лист на отработку Past Simple для 4 классов.</p>
+                        <div class="product-price">150 руб.</div>
+                        <button class="btn buy-btn" data-id="1">Купить</button>
+                    </div>
+                </div>
+
+                <!-- Product Card 2 -->
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="images/cover2.png" alt="">
+                    </div>
+                    <div class="product-info">
+                        <h3>Карточки по теме Food</h3>
+                        <p>Набор из 16 карточек с лексикой для начальной школы с яркими иллюстрациями.</p>
+                        <div class="product-price">200 руб.</div>
+                        <button class="btn buy-btn" data-id="2">Купить</button>
+                    </div>
+                </div>
+
+                <!-- Product Card 3 -->
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="images/cover3.png" alt="">
+                    </div>
+                    <div class="product-info">
+                        <h3>Игра по теме Colours</h3>
+                        <p>Интерактивная игра для закрепления слов по теме Цвета .</p>
+                        <div class="product-price">150 руб.</div>
+                        <button class="btn buy-btn" data-id="3">Купить</button>
+                    </div>
+                </div>
+
+                <!-- Product Card 4 -->
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="images/cover4.png" alt="">
+                    </div>
+                    <div class="product-info">
+                        <h3>Презентация по теме My family</h3>
+                        <p>Интерактивная презентация по теме Семья.</p>
+                        <div class="product-price">350 руб.</div>
+                        <button class="btn buy-btn" data-id="4">Купить</button>
+                    </div>
+                </div>
+
+                <!-- Product Card 5 -->
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="images/cover1.png" alt="">
+                    </div>
+                    <div class="product-info">
+                        <h3>Задания для дошкольников</h3>
+                        <p>Комплект развивающих заданий для подготовки к школепо английскому языку.</p>
+                        <div class="product-price">400 руб.</div>
+                        <button class="btn buy-btn" data-id="5">Купить</button>
+                    </div>
+                </div>
+
+                <!-- Product Card 6 -->
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="images/cover2.png" alt="">
+                    </div>
+                    <div class="product-info">
+                        <h3>Открытки </h3>
+                        <p>10 тематических открыток к Рождеству.</p>
+                        <div class="product-price">150 руб.</div>
+                        <button class="btn buy-btn" data-id="6">Купить</button>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="materials-line">
+                Материалы для ваших уроков (рабочие листы, карточки, игры, презентации)
+            </div>
+        </div>
+    </section>
+
+    <!-- Modal Windows -->
+    <!-- Modal 1 -->
+    <div class="modal" id="modal-1">
+        <span class="close-modal">&times;</span>
+        <div class="modal-content">
+            <div class="modal-body">
+                <div class="modal-images">
+                    <div class="carousel">
+                        <div class="carousel-inner">
+                            <div class="carousel-item active">
+                                <img src="https://images.unsplash.com/photo-1503676260728-1c00da094a0b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="">
+                            </div>
+                            <div class="carousel-item">
+                                <img src="https://images.unsplash.com/photo-1635070041078-e363dbe005cb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="">
+                            </div>
+                            <div class="carousel-item">
+                                <img src="https://images.unsplash.com/photo-1596495577886-d920f1fb7238?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="">
+                            </div>
+                        </div>
+                        <div class="carousel-control prev">
+                            <i class="fas fa-chevron-left"></i>
+                        </div>
+                        <div class="carousel-control next">
+                            <i class="fas fa-chevron-right"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-details">
+                    <h2>Рабочие листы по теме Past Simple</h2>
+                    <div class="modal-price">150 руб.</div>
+                    <p class="modal-description">Рабочий лист на отработку Past Simple для учащихся 4 классов.Идеально подходит для дифференцированного обучения и самостоятельной работы учащихся.</p>
+                    
+                    <div class="features">
+                        <h3>Состав рабочего листа:</h3>
+                        <ul>
+                            <li>10 заданий разной механики в формате PDF</li>
+                            <li>Ответы ко всем заданиям</li>
+                             </ul>
+                    </div>
+                    
+                    <div class="modal-actions">
+                        <a href="#" class="btn">Купить сейчас</a>
+                        <button class="btn btn-outline">Добавить в корзину</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal 2 -->
+    <div class="modal" id="modal-2">
+        <span class="close-modal">&times;</span>
+        <div class="modal-content">
+            <div class="modal-body">
+                <div class="modal-images">
+                    <div class="carousel">
+                        <div class="carousel-inner">
+                            <div class="carousel-item active">
+                                <img src="https://images.unsplash.com/photo-1481627834876-b7833e8f5570?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="Карточки для изучения английского">
+                            </div>
+                            <div class="carousel-item">
+                                <img src="https://images.unsplash.com/photo-1523800503107-5bc3ba2a6f81?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="Карточки для изучения английского пример 2">
+                            </div>
+                            <div class="carousel-item">
+                                <img src="https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="Карточки для изучения английского пример 3">
+                            </div>
+                        </div>
+                        <div class="carousel-control prev">
+                            <i class="fas fa-chevron-left"></i>
+                        </div>
+                        <div class="carousel-control next">
+                            <i class="fas fa-chevron-right"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-details">
+                    <h2>Карточки для изучения темы Food</h2>
+                    <div class="modal-price">200 руб.</div>
+                    <p class="modal-description">Набор из 16 пар карточек по теме Еда с яркими иллюстрациями.</p>
+                    
+                    <div class="features">
+                        <h3></h3>
+                        <ul>
+                            <li>32 карточки с цветными иллюстрациями</li>
+                            <li>32 слова по теме</li>
+                            <li> Формат PDF, PNG </li>
+                            
+                        </ul>
+                    </div>
+                    
+                    <div class="modal-actions">
+                        <a href="#" class="btn">Купить сейчас</a>
+                        <button class="btn btn-outline">Добавить в корзину</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+<!-- Modal 3 -->
+<div class="modal" id="modal-3">
+    <span class="close-modal">&times;</span>
+    <div class="modal-content">
+        <div class="modal-body">
+            
+            <div class="modal-images">
+                <div class="carousel">
+                    <div class="carousel-inner">
+                        <div class="carousel-item active">
+                            <img src="https://images.unsplash.com/photo-1536922246289-88c42f957773?auto=format&fit=crop&w=1000&q=80" alt="">
+                        </div>
+                        <div class="carousel-item">
+                            <img src="https://images.unsplash.com/photo-1588072432836-4bad826438ce?auto=format&fit=crop&w=1000&q=80" alt="">
+                        </div>
+                        <div class="carousel-item">
+                            <img src="https://images.unsplash.com/photo-1588072432925-8d28fe5f9618?auto=format&fit=crop&w=1000&q=80" alt="">
+                        </div>
+                    </div>
+
+                    <div class="carousel-control prev">
+                        <i class="fas fa-chevron-left"></i>
+                    </div>
+                    <div class="carousel-control next">
+                        <i class="fas fa-chevron-right"></i>
+                    </div>
+                </div>
+            </div>
+
+            <div class="modal-details">
+                <h2>Игра по теме Colours</h2>
+                <div class="modal-price">150 руб.</div>
+
+                <p class="modal-description">
+                    Интерактивная игра по теме Цвета. Подходит для начальной школы. Лёгкая, яркая, помогает закреплять лексику.
+                </p>
+
+                <div class="features">
+                    <h3>Что входит:</h3>
+                    <ul>
+                        <li>Интерактивная онлайн-игра</li>
+                        <li>Цветные карточки</li>
+                        <li>Инструкция для учителя</li>
+                    </ul>
+                </div>
+
+                <div class="modal-actions">
+                    <a href="#" class="btn">Купить сейчас</a>
+                    <button class="btn btn-outline">Добавить в корзину</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+<!-- Modal 4 -->
+<div class="modal" id="modal-4">
+    <span class="close-modal">&times;</span>
+    <div class="modal-content">
+        <div class="modal-body">
+            
+            <div class="modal-images">
+                <div class="carousel">
+                    <div class="carousel-inner">
+                        <div class="carousel-item active">
+                            <img src="https://images.unsplash.com/photo-1588072432836-4bad826438ce?auto=format&fit=crop&w=1000&q=80" alt="">
+                        </div>
+                        <div class="carousel-item">
+                            <img src="https://images.unsplash.com/photo-1588072432904-843fddec0900?auto=format&fit=crop&w=1000&q=80" alt="">
+                        </div>
+                        <div class="carousel-item">
+                            <img src="https://images.unsplash.com/photo-1588072432885-95c9bb0b56c0?auto=format&fit=crop&w=1000&q=80" alt="">
+                        </div>
+                    </div>
+
+                    <div class="carousel-control prev">
+                        <i class="fas fa-chevron-left"></i>
+                    </div>
+                    <div class="carousel-control next">
+                        <i class="fas fa-chevron-right"></i>
+                    </div>
+                </div>
+            </div>
+
+            <div class="modal-details">
+                <h2>Презентация по теме My family</h2>
+                <div class="modal-price">350 руб.</div>
+
+                <p class="modal-description">
+                    Интерактивная презентация по теме <b>My family</b> для начальной школы. 
+                    Подходит для введения и закрепления лексики, включает слайды с картинками, 
+                    заданиями и вопросами для устной практики.
+                </p>
+
+                <div class="features">
+                    <h3>Что входит:</h3>
+                    <ul>
+                        <li>Интерактивная презентация (формат PPTX / PDF)</li>
+                        <li>Слайды с лексикой и иллюстрациями</li>
+                        <li>Вопросы для говорения и мини-задания</li>
+                    </ul>
+                </div>
+
+                <div class="modal-actions">
+                    <a href="#" class="btn">Купить сейчас</a>
+                    <button class="btn btn-outline">Добавить в корзину</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+<!-- Modal 5 -->
+<div class="modal" id="modal-5">
+    <span class="close-modal">&times;</span>
+    <div class="modal-content">
+        <div class="modal-body">
+            
+            <div class="modal-images">
+                <div class="carousel">
+                    <div class="carousel-inner">
+                        <div class="carousel-item active">
+                            <img src="https://images.unsplash.com/photo-1546410531-bb4caa6b424d?auto=format&fit=crop&w=1000&q=80" alt="">
+                        </div>
+                        <div class="carousel-item">
+                            <img src="https://images.unsplash.com/photo-1503454537195-1dcabb73ffb9?auto=format&fit=crop&w=1000&q=80" alt="">
+                        </div>
+                        <div class="carousel-item">
+                            <img src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=1000&q=80" alt="">
+                        </div>
+                    </div>
+
+                    <div class="carousel-control prev">
+                        <i class="fas fa-chevron-left"></i>
+                    </div>
+                    <div class="carousel-control next">
+                        <i class="fas fa-chevron-right"></i>
+                    </div>
+                </div>
+            </div>
+
+            <div class="modal-details">
+                <h2>Задания для дошкольников</h2>
+                <div class="modal-price">400 руб.</div>
+
+                <p class="modal-description">
+                    Комплект развивающих заданий по английскому языку для детей 
+                    5–7 лет. Помогает мягко познакомить ребёнка с английским, развивает внимание, 
+                    память и внимание через игровые упражнения.
+                </p>
+
+                <div class="features">
+                    <h3>Что входит:</h3>
+                    <ul>
+                        <li>Рабочие листы в формате PDF для печати</li>
+                        <li>Игровые задания на лексику и простые фразы</li>
+                        <li>Материалы, подходящие для занятий дома и в детском саду</li>
+                    </ul>
+                </div>
+
+                <div class="modal-actions">
+                    <a href="#" class="btn">Купить сейчас</a>
+                    <button class="btn btn-outline">Добавить в корзину</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+<!-- Modal 6 -->
+<div class="modal" id="modal-6">
+    <span class="close-modal">&times;</span>
+    <div class="modal-content">
+        <div class="modal-body">
+            
+            <div class="modal-images">
+                <div class="carousel">
+                    <div class="carousel-inner">
+                        <div class="carousel-item active">
+                            <img src="https://images.unsplash.com/photo-1607082348824-0a96f2a4b9da?auto=format&fit=crop&w=1000&q=80" alt="">
+                        </div>
+                        <div class="carousel-item">
+                            <img src="https://images.unsplash.com/photo-1545239351-1141bd82e8a6?auto=format&fit=crop&w=1000&q=80" alt="">
+                        </div>
+                        <div class="carousel-item">
+                            <img src="https://images.unsplash.com/photo-1512389142860-9c449e58a543?auto=format&fit=crop&w=1000&q=80" alt="">
+                        </div>
+                    </div>
+
+                    <div class="carousel-control prev">
+                        <i class="fas fa-chevron-left"></i>
+                    </div>
+                    <div class="carousel-control next">
+                        <i class="fas fa-chevron-right"></i>
+                    </div>
+                </div>
+            </div>
+
+            <div class="modal-details">
+                <h2>Открытки</h2>
+                <div class="modal-price">150 руб.</div>
+
+                <p class="modal-description">
+                    Набор из 10 тематических открыток к Рождеству и Новому году на английском языке. 
+                    Можно использовать на уроках, для раздачи ученикам или как часть новогоднего проекта.
+                </p>
+
+            <div class="features">
+                <h3>Что входит:</h3>
+                <ul>
+                    <li>10 цветных открыток в формате PDF/PNG для печати</li>
+                    <li>Короткие фразы и поздравления на английском языке</li>
+                    <li>Можно распечатать в цвете или ч/б для раскрашивания</li>
+                </ul>
+            </div>
+
+            <div class="modal-actions">
+                <a href="#" class="btn">Купить сейчас</a>
+                <button class="btn btn-outline">Добавить в корзину</button>
+            </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>English5_dom </h3>
+                    <p>Мы создаем качественные учебные материалы, которые помогают учителям проводить интересные и эффективные уроки.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-vk"></i></a>
+                        <a href="#"><i class="fab fa-telegram"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                        <a href="#"><i class="fab fa-odnoklassniki"></i></a>
+                    </div>
+                </div>
+              
+                <div class="footer-column">
+                    <h3>Поддержка</h3>
+                    <ul>
+                        <li><a href="#">Задать вопрос</a></li>
+                        <li><a href="#">Связаться с нами</a></li>
+                        
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Контакты</h3>
+                    <ul>
+                        <li><i class="fas fa-map-marker-alt"></i> г. Москва, ул. Образцова, 15</li>
+                        <li><i class="fas fa-phone"></i> +7 (495) 123-45-67</li>
+                        <li><i class="fas fa-envelope"></i> info@English5_dom .рф</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2023 English5_dom. Все права защищены.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Modal functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const buyButtons = document.querySelectorAll('.buy-btn');
+            const modals = document.querySelectorAll('.modal');
+            const closeButtons = document.querySelectorAll('.close-modal');
+            
+            // Open modal when buy button is clicked
+            buyButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    const productId = this.getAttribute('data-id');
+                    const modal = document.getElementById(`modal-${productId}`);
+                    if (modal) {
+                        modal.style.display = 'block';
+                        document.body.style.overflow = 'hidden';
+                    }
+                });
+            });
+            
+            // Close modal when close button is clicked
+            closeButtons.forEach(button => {
+                button.addEventListener('click', function() {
+                    const modal = this.closest('.modal');
+                    if (modal) {
+                        modal.style.display = 'none';
+                        document.body.style.overflow = 'auto';
+                    }
+                });
+            });
+            
+            // Close modal when clicking outside the modal content
+            window.addEventListener('click', function(event) {
+                modals.forEach(modal => {
+                    if (event.target === modal) {
+                        modal.style.display = 'none';
+                        document.body.style.overflow = 'auto';
+                    }
+                });
+            });
+            
+            // Carousel functionality
+            const carousels = document.querySelectorAll('.carousel');
+            
+            carousels.forEach(carousel => {
+                const inner = carousel.querySelector('.carousel-inner');
+                const items = carousel.querySelectorAll('.carousel-item');
+                const prevBtn = carousel.querySelector('.carousel-control.prev');
+                const nextBtn = carousel.querySelector('.carousel-control.next');
+                
+                let currentIndex = 0;
+                
+                function showSlide(index) {
+                    items.forEach(item => item.classList.remove('active'));
+                    items[index].classList.add('active');
+                    currentIndex = index;
+                }
+                
+                function nextSlide() {
+                    let newIndex = (currentIndex + 1) % items.length;
+                    showSlide(newIndex);
+                }
+                
+                function prevSlide() {
+                    let newIndex = (currentIndex - 1 + items.length) % items.length;
+                    showSlide(newIndex);
+                }
+                
+                if (nextBtn) nextBtn.addEventListener('click', nextSlide);
+                if (prevBtn) prevBtn.addEventListener('click', prevSlide);
+                
+                // Auto-advance carousel every 5 seconds
+                setInterval(nextSlide, 5000);
+            });
+        });
+    </script>
+</body>
+</html>
